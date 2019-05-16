@@ -1,0 +1,52 @@
+{
+  "books": [
+    {
+      "id": 1,
+      "title": "Harry Potter and the Philosopher's Stone",
+      "description": "Look in the mirror...",
+      "year": 1995
+    },
+    {
+      "id": 2,
+      "title": "Harry Potter and the Chamber of Secrets",
+      "description": "Psssk!",
+      "year": 1997
+    },
+    {
+      "id": 3,
+      "title": "Harry Potter and the Prisoner of Azkaban",
+      "description": "Woof!",
+      "year": 1998
+    },
+    {
+      "title": "potato",
+      "description": "Long...",
+      "year": 1954,
+      "id": 6
+    },
+    {
+      "title": "cool",
+      "description": "great",
+      "year": 2020,
+      "id": 7
+    },
+    {
+      "title": "cool",
+      "description": "great",
+      "year": 2020,
+      "id": 8
+    },
+    {
+      "title": "cool2",
+      "description": "great2",
+      "year": 2022,
+      "id": 9
+    },
+    {
+      "title": "asda",
+      "description": "asdfgh",
+      "year": "asdsfg",
+      "id": 10
+    }
+  ]
+}

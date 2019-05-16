@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <script defer src='index.js'></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.css" />
+  <link rel="stylesheet" href="style.css" />
+  <title>Fetch Part 2</title>
+</head>
+<body>
+
+  <form id='new-book-form' class='ui form'>
+    <input required name='title' placeholder="title" />
+    <input required name='desc' placeholder="description" />
+    <input required name='year' placeholder="year" />
+    <button class='ui button'>ADD BOOK</button>
+  </form>
+
+  <h1>Books</h1>
+
+  <table class="ui celled table">
+    <thead>
+      <tr>
+        <th>Title</th>
+        <th>Description</th>
+        <th>Release year</th>
+        <th>Delete?</th>
+      </tr>
+    </thead>
+    <tbody>
+    </tbody>
+  </table>
+</body>
+</html>
