@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.css" />
+  <script defer src='index.js'></script>
+  <title>Lowdium</title>
+</head>
+<body>
+  <h1>Lowdium</h1>
+  <p>Where stories don't matter so much.</p>
+  <h2>Current user: <span id='username'>Not signed in</span></h2>
+
+  <div class='ui segment'>
+    <div id='posts' class='ui cards'>
+    </div>
+  </div>
+
+  <br />
+
+  <div class='ui segment'>
+    <form id='new-post-form' class='ui form'>
+      <div class='field'>
+        <input class='input' name="title" placeholder="title"/>
+      </div>
+      <div class='field'>
+        <textarea name="content" placeholder="content"></textarea>
+      </div>
+      <button class="ui blue submit button">SUBMIT</button>
+    </form>
+  </div>
+</body>
+</html>
