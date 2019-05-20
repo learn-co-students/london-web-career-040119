@@ -3,6 +3,21 @@ const TRAINERS_URL = `${BASE_URL}/trainers`
 const POKEMONS_URL = `${BASE_URL}/pokemons`
 let trainers = []
 
+function api(url, options={}) {
+    // We've refactored the api
+    // functionality (DRY principle)
+    // side effect is that we're now
+    // able to universally handle fetch errors.
+    return fetch(url, options)
+    .then(response => {
+        if (response.ok) {
+            return response.json()
+        } else {
+            return Promise.reject(response.json())
+        }
+    })
+}
+
 function handleClick(e) {
     // Our event listener functions 
     // by event delegation which is
@@ -10,25 +25,27 @@ function handleClick(e) {
     // from our DOM. Read more here: https://davidwalsh.name/event-delegate
     if (e.target.tagName === 'BUTTON') {
         if (e.target.innerText === 'Add Pokemon') {
-            fetch(POKEMONS_URL, {
+            api(POKEMONS_URL, {
                 method: 'POST',
                 headers : {
                     'Content-Type': 'application/json'
                 },
                 body: JSON.stringify({trainer_id: e.target.dataset['trainerId']})
             })
-            .then(resp => resp.json())
             .then(pokemon => {
                 // In the code review, I'd mentioned that we can lazily call init to re-render all our trainers
                 // Below is the more appropriate way
+                // debugger
                 trainers.find(trainer => trainer.id === pokemon.trainer_id).pokemons = [...trainers.find(trainer => trainer.id === pokemon.trainer_id).pokemons, pokemon]
                 renderTrainers(trainers)
             })
+            .catch(errorResponse => {
+                errorResponse.then(console.log)
+            })
         } else if ((e.target.innerText === 'Release')) {
-            fetch(`${POKEMONS_URL}/${e.target.dataset['pokemonId']}`, {
+            api(`${POKEMONS_URL}/${e.target.dataset['pokemonId']}`, {
                 method: 'DELETE'
             })
-            .then(resp => resp.json())
             .then(pokemon => {
                 // In the code review, I'd mentioned that we can lazily call init to re-render all our trainers
                 // Below is the more appropriate way.
@@ -37,6 +54,9 @@ function handleClick(e) {
                 pokemons = trainers.find(trainer => trainer.id === pokemon.trainer_id).pokemons
                 trainers.find(trainer => trainer.id === pokemon.trainer_id).pokemons = pokemons.filter(p => p.id !== pokemon.id)
                 renderTrainers(trainers)
+            })
+            .catch(errorResponse => {
+                errorResponse.then(console.log)
             })
         }
     }
@@ -67,11 +87,13 @@ function renderTrainers(trainers) {
 }
 
 function init() {
-    fetch(TRAINERS_URL)
-    .then(response => response.json())
+    api(TRAINERS_URL)
     .then(data => {
         trainers = data
         renderTrainers(trainers)
+    })
+    .catch(errorResponse => {
+        errorResponse.then(console.log)
     })
 }
 

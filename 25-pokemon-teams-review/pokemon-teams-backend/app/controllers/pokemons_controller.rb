@@ -7,7 +7,9 @@ class PokemonsController < ApplicationController
             @pokemon = Pokemon.create(nickname: name, species: species, trainer_id: params[:trainer_id])
             render json: @pokemon
         else
-            render json: {message: 'Too many pokemons!'}
+            # We need to tell the render macro to respond with a Bad Request error
+            # Is there a more appropriate status code? Check here: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status
+            render json: {message: 'Too many pokemons!'}, status: 400
         end
     end
 
