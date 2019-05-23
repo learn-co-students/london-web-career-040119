@@ -1,0 +1,64 @@
+{
+  "dogs": [
+    {
+      "id": 5,
+      "name": "Gracie",
+      "breed": "Miniature Pinscher",
+      "sex": "female"
+    },
+    {
+      "id": 8,
+      "name": "Chloe",
+      "breed": "Dandie Terrier",
+      "sex": "male"
+    },
+    {
+      "id": 9,
+      "name": "Shelby",
+      "breed": "Kuvasz",
+      "sex": "male"
+    },
+    {
+      "id": 10,
+      "name": "Patches",
+      "breed": "Dingo",
+      "sex": "male"
+    },
+    {
+      "id": 13,
+      "name": "Lady",
+      "breed": "Mexicanhairless",
+      "sex": "female"
+    },
+    {
+      "id": 14,
+      "name": "Coco",
+      "breed": "Maltese",
+      "sex": "female"
+    },
+    {
+      "id": 16,
+      "name": "Buddy",
+      "breed": "Walker Hound",
+      "sex": "female"
+    },
+    {
+      "id": 17,
+      "name": "Chance",
+      "breed": "Flatcoated Retriever",
+      "sex": "female"
+    },
+    {
+      "id": 18,
+      "name": "Chance",
+      "breed": "Toy Terrier",
+      "sex": "male"
+    },
+    {
+      "id": 19,
+      "name": "Penny",
+      "breed": "Wheaten Terrier",
+      "sex": "male"
+    }
+  ]
+}
