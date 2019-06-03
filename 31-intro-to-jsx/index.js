@@ -10,6 +10,7 @@ const Article = (props) => React.createElement('div', { className: 'article' }, 
   React.createElement('p', null, props.content),
 ])
 
+// Here's a Navbar without JSX
 const Navbar = props => React.createElement('div', { className: `ui inverted ${props.colour} menu` },
   React.createElement('a', { className: "item" },
     React.createElement('h2', { className: "ui header" }, [
@@ -20,6 +21,7 @@ const Navbar = props => React.createElement('div', { className: `ui inverted ${p
   )
 )
 
+// Here's the same Navbar, but with JSX
 const NavbarJSX = props =>
   <div className={`ui inverted ${props.colour} menu`}>
     <a className='item'>
@@ -47,7 +49,6 @@ const App = props => React.createElement('div', null, [
   Article({ title: 'Owl', image: 'https://cloud.netlifyusercontent.com/assets/344dbf88-fdf9-42bb-adb4-46f01eedd629/242ce817-97a3-48fe-9acd-b1bf97930b01/09-posterization-opt.jpg', content: "You're a hoot!" }),
   Article({ title: 'Swan', image: 'https://datarecovery.wondershare.com/uploads/image-3-4.jpg', content: "Quack!" }),
 ])
-
 
 ReactDOM.render(
   // what to render
