@@ -10,11 +10,17 @@ class PaintingList extends Component {
     paintings: paintings,
   }
 
+  getFilteredPaintings = () =>
+    this.state.paintings
+      .filter(painting => painting.title.toLowerCase().includes(this.props.searchTerm.toLowerCase()))
+
   render () {
+    const filteredPaintings = this.getFilteredPaintings()
     return (
       <ul>
         {
-          this.state.paintings.map(painting => <Painting handleClick={this.props.selectPainting} painting={painting} />)
+          filteredPaintings
+            .map(painting => <Painting handleClick={this.props.selectPainting} painting={painting} />)
         }
       </ul>
     )

@@ -1,5 +1,7 @@
 import React from 'react'
 
+import Search from './Search'
+
 const Navbar = props =>
   <div className={`ui inverted ${props.colour} menu`}>
     <a className='item'>
@@ -13,6 +15,9 @@ const Navbar = props =>
         </div>
       </h2>
     </a>
+    <div className='item ui form'>
+      <Search searchTerm={props.searchTerm} updateSearchTerm={props.updateSearchTerm} />
+    </div>
   </div>
 
 export default Navbar

@@ -1,12 +1,13 @@
 import React, { Component } from 'react'
 import Navbar from './Navbar'
-import PaintingList from './components/PaintingList'
-import PaintingDetails from './components/PaintingDetails'
+import PaintingList from './PaintingList'
+import PaintingDetails from './PaintingDetails'
 
 class App extends Component {
 
   state = {
-    selectedPainting: null
+    selectedPainting: null,
+    searchTerm: 'woman'
   }
 
   selectPainting = (painting) => {
@@ -17,6 +18,10 @@ class App extends Component {
     this.setState({ selectedPainting: null })
   }
 
+  updateSearchTerm = (event) => {
+    this.setState({ searchTerm: event.target.value })
+  }
+
   render () {
     return <div className="App">
       <Navbar
@@ -24,11 +29,13 @@ class App extends Component {
         subHeader="Having fun with react props!"
         colour="red"
         icon="react"
+        updateSearchTerm={this.updateSearchTerm}
+        searchTerm={this.state.searchTerm}
       />
       {
         this.state.selectedPainting
           ? <PaintingDetails deselectPainting={this.deselectPainting} painting={this.state.selectedPainting} />
-          : <PaintingList selectPainting={this.selectPainting} />
+          : <PaintingList searchTerm={this.state.searchTerm} selectPainting={this.selectPainting} />
       }
     </div>
   }
