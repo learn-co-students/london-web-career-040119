@@ -1,13 +1,13 @@
 import React from 'react'
-import { getHogImageSrc } from '../helpers'
 
-const HogDetails = ({ hog, deselectHog }) =>
-  <div className='ui twelve wide column'>
-    <button onClick={deselectHog}>GO BACK</button>
-    <br />
-    <img src={getHogImageSrc(hog.name)} />
-    <p>{hog.name}</p>
-    <p>{hog.specialty}</p>
+const weight = 'weight as a ratio of hog to LG - 24.7 Cu. Ft. French Door Refrigerator with Thru-the-Door Ice and Water'
+
+const HogDetails = ({ hideDetails, hog }) =>
+  <div>
+    <p>Specialty: {hog.specialty}</p>
+    <p>{hog.greased ? 'Greased' : 'Not Greased'}</p>
+    <p>Weight: {hog[weight]} </p>
+    <button onClick={hideDetails}>▲</button>
   </div>
 
 export default HogDetails
