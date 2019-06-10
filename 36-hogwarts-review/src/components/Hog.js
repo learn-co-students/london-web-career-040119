@@ -38,8 +38,8 @@ class Hog extends React.Component {
       <br />
       {
         this.state.showDetails
-        ? <HogDetails hog={hog} hideDetails={this.hideDetails} />
-        : <button onClick={this.showDetails}>▼</button>
+          ? <HogDetails hog={hog} hideDetails={this.hideDetails} />
+          : <button onClick={this.showDetails}>▼</button>
       }
     </div>
   }

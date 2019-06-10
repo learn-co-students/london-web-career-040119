@@ -7,6 +7,10 @@ import HogList from './HogList'
 
 const weight = 'weight as a ratio of hog to LG - 24.7 Cu. Ft. French Door Refrigerator with Thru-the-Door Ice and Water'
 
+const isGreased = hog => hog.isGreased
+const byName = (a, b) => a.name.localeCompare(b.name)
+const byWeight = (a, b) => b[weight] - a[weight]
+
 class App extends Component {
 
   state = {
@@ -15,7 +19,7 @@ class App extends Component {
     sortBy: 'none'
   }
 
-  updateSortBy = (sortType) => {
+  updateSortBy = sortType => {
     this.setState({ sortBy: sortType })
   }
 
@@ -23,44 +27,36 @@ class App extends Component {
     this.setState({ showGreasedOnly: !this.state.showGreasedOnly })
   }
 
-  sortHogs = (hogs) => {
+  sortHogs = hogs => {
     const { sortBy } = this.state
     const hogsCopy = [...hogs]
 
-    if (sortBy === 'name') {
-      hogsCopy.sort((a, b) => {
-        if (a.name > b.name) return -1
-        if (a.name < b.name) return 1
-        return 0
-      })
-    }
-
-    if (sortBy === 'weight') {
-      hogsCopy.sort((a, b) => b[weight] - a[weight])
-    }
+    if (sortBy === 'name') hogsCopy.sort(byName)
+    if (sortBy === 'weight') hogsCopy.sort(byWeight)
 
     return hogsCopy
-
   }
 
   getFilteredHogs = () => {
     const { hogs, showGreasedOnly } = this.state
     return showGreasedOnly 
-      ? hogs.filter(hog => hog.greased)
+      ? hogs.filter(isGreased)
       : hogs
   }
 
   render() {
-    const filteredAndSortedHogs = this.sortHogs(this.getFilteredHogs())
+    const filteredHogs = this.getFilteredHogs()
+    const filteredAndSortedHogs = this.sortHogs(filteredHogs)
 
     const { toggleShowGreasedOnly, updateSortBy } = this
-    return (
-      <div className="App">
-          <Nav />
-          <Search updateSortBy={updateSortBy} toggleShowGreasedOnly={toggleShowGreasedOnly} />
-          <HogList hogs={filteredAndSortedHogs} />
-      </div>
-    )
+    return <div className="App">
+      <Nav />
+      <Search
+        updateSortBy={updateSortBy}
+        toggleShowGreasedOnly={toggleShowGreasedOnly}
+      />
+      <HogList hogs={filteredAndSortedHogs} />
+    </div>
   }
 }
 
